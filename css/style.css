@@ -11,6 +11,7 @@ body {
 	font-size: 16px;
 	line-height: 1.6;
 	background-color: #f9f9f9;
+	display: flex;
 }
 
 h1,
@@ -50,13 +51,79 @@ hr {
 }
 
 /* Layout */
+.main {
+	width: 100%;
+	height: auto;
+	background-image: url("/img/Breaking_bad_poster.jpg");
+	background-color: rgb(50, 50, 50);
+	background-blend-mode: soft-light;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	display: flex;
+	justify-content: center;
+}
 
 .container {
-	padding: 0;
-	margin: 0 auto;
-	width: 100%;
+	padding: 3em;
+	width: 85%;
 	max-width: 1000px;
+	color: #f6d57a;
+	border-radius: 2px;
+	border: 3px solid #f0f5c0;
 }
+
+/* blockquote {
+	font-size: 2em;
+	line-height: 2em;
+  }
+  
+  blockquote:before {
+	content: open-quote;
+  }
+  
+  blockquote:after {
+	content: close-quote;
+  }
+  
+  blockquote:before,
+  blockquote:after {
+	display: inline-block;
+	vertical-align: bottom;
+	font-size: 4em;
+	top: .2em;
+	position: relative;
+  } */
+
+  .quote_article {
+	font-size: 2em;
+	line-height: 2em;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-content: center;
+  }
+
+  .quote_article:before {
+	content: open-quote;
+  }
+  
+  .quote_article:after {
+	content: close-quote;
+  }
+
+  .quote_article:before,
+  .quote_article:after {
+	display: inline-block;
+	vertical-align: bottom;
+	font-size: 4em;
+	top: .2em;
+	position: relative;
+  }
+
+
 
 /* Media Queries */
 
