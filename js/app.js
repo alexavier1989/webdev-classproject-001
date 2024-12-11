@@ -40,7 +40,7 @@ function changeBackgroundByAuthor(authorResponse){
     return imagePath;
 }
 
-function callFunctionByTime(apiUrl, time) {
+function callPhrasesApiByTime(apiUrl, time) {
 
     async function fetchData() {
         try {
@@ -75,6 +75,6 @@ function callFunctionByTime(apiUrl, time) {
 
 document.addEventListener('DOMContentLoaded', () => {
     const apiUrl = "https://api.breakingbadquotes.xyz/v1/quotes";
-    callFunctionByTime(apiUrl, 12000);
+    callPhrasesApiByTime(apiUrl, 12000);
 })
 
