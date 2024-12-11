@@ -1,7 +1,43 @@
 //JavaScript
 
-function changeBackgroundByAuthor(){
-    // TODO: Change de background image by quote author
+const authorNames = [
+    {
+        lowerCaseName: "gustavofring",
+        picturePath: "/img/Gus_Fring.jpg"
+    },{
+        lowerCaseName: "hankschrader",
+        picturePath: "/img/Hank_Schrader.jpg"
+    },{
+        lowerCaseName: "jessepinkman",
+        picturePath: "/img/Jesse_Pinkman.jpg"
+    },{
+        lowerCaseName: "lalosalamanca",
+        picturePath: "/img/Lalo_Salamanca.jpg"
+    },{
+        lowerCaseName: "mikeehrmantraut",
+        picturePath: "/img/Mike_Ehrmantraut.jpg"
+    },{
+        lowerCaseName: "saulgoodman",
+        picturePath: "/img/Saul_Goodman.jpg"
+    },{
+        lowerCaseName: "skylerwhite",
+        picturePath: "/img/Skyler_White.jpg"
+    },{
+        lowerCaseName: "tiosalamanca",
+        picturePath: "/img/Tio_Salamanca.jpg"
+    },{
+        lowerCaseName: "tucosalamanca",
+        picturePath: "/img/Tuco_Salamanca.jpg"
+    },{
+        lowerCaseName: "walterwhite",
+        picturePath: "/img/Walter_White.jpg"
+    }
+
+]
+function changeBackgroundByAuthor(authorResponse){
+    const authorObj = authorNames.filter((authorName) => authorName.lowerCaseName.includes( authorResponse.toLowerCase().replace(" ","")))
+    const imagePath = authorObj != undefined && authorObj.length > 0 ? authorObj[0].picturePath : "/img/Breaking_bad_poster.jpg";
+    return imagePath;
 }
 
 function callFunctionByTime(apiUrl, time) {
@@ -15,12 +51,18 @@ function callFunctionByTime(apiUrl, time) {
             }
 
             const data = await response.json();
-            let quote = document.querySelector(".quote");
-            let author = document.querySelector(".author");
+            let quoteElement = document.querySelector(".quote");
+            let authorElement = document.querySelector(".author");
+            let mainElement = document.querySelector(".main");
 
-            quote.innerHTML = data[0].quote;
-            author.innerHTML = data[0].author;
-            changeBackgroundByAuthor();
+            const quoteResponse = data[0].quote;
+            const authorResponse = data[0].author;
+
+            let changingBackground = changeBackgroundByAuthor(authorResponse);
+            mainElement.style.backgroundImage = `url(${changingBackground})`;
+
+            quoteElement.innerHTML = quoteResponse;
+            authorElement.innerHTML = authorResponse;
 
         } catch (error) {
             console.error('API error: ', error);
@@ -32,8 +74,7 @@ function callFunctionByTime(apiUrl, time) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("La página se ha cargado completamente");
     const apiUrl = "https://api.breakingbadquotes.xyz/v1/quotes";
-    callFunctionByTime(apiUrl, 6000);
+    callFunctionByTime(apiUrl, 12000);
 })
 
