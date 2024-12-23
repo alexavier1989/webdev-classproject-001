@@ -58,11 +58,23 @@ function callPhrasesApiByTime(apiUrl, time) {
             const quoteResponse = data[0].quote;
             const authorResponse = data[0].author;
 
-            let changingBackground = changeBackgroundByAuthor(authorResponse);
-            mainElement.style.backgroundImage = `url(${changingBackground})`;
+            // Agregar transición
+            quoteElement.style.transition = "opacity 0.8s";
+            authorElement.style.transition = "opacity 0.8s";
+            mainElement.style.transition = "background-image 0.8s";
+            quoteElement.style.opacity = 0;
+            authorElement.style.opacity = 0;
 
-            quoteElement.innerHTML = quoteResponse;
-            authorElement.innerHTML = authorResponse;
+            setTimeout(() => {
+                let changingBackground = changeBackgroundByAuthor(authorResponse);
+                mainElement.style.backgroundImage = `url(${changingBackground})`;
+
+                quoteElement.innerHTML = quoteResponse;
+                authorElement.innerHTML = authorResponse;
+
+                quoteElement.style.opacity = 1;
+                authorElement.style.opacity = 1;
+            }, 800);
 
         } catch (error) {
             console.error('API error: ', error);
