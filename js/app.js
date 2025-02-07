@@ -58,7 +58,7 @@ function callPhrasesApiByTime(apiUrl, time) {
             const quoteResponse = data[0].quote;
             const authorResponse = data[0].author;
 
-            // Agregar transición
+            // Animation
             quoteElement.style.transition = "opacity 0.8s";
             authorElement.style.transition = "opacity 0.8s";
             mainElement.style.transition = "background-image 0.8s";
